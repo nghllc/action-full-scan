@@ -14,7 +14,8 @@ on:
 jobs:
   check-run:
     runs-on: ubuntu-latest
-
+    env:
+      GITHUB_TOKEN: ${{ secrets.MY_TOKEN }}
     steps:
     - name: Checkout
       uses: actions/checkout@v4
@@ -25,5 +26,5 @@ jobs:
       uses: ./
       id: action-full-scan
       with:
-        target: 'http://localhost'
+        target: 'http://testphp.vulnweb.com/'
         allow_issue_writing: false
