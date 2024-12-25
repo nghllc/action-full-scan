@@ -26,5 +26,5 @@ jobs:
       uses: ./
       id: action-full-scan
       with:
-        target: 'http://testphp.vulnweb.com/'
+        target: 'http://testfire.net/'
         allow_issue_writing: false
