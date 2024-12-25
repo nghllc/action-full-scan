@@ -14,6 +14,7 @@ on:
 jobs:
   check-run:
     runs-on: ubuntu-22.04
+    name: Scan the webapplication
     env:
       GITHUB_TOKEN: ${{ secrets.MY_TOKEN }}
     steps:
@@ -23,10 +24,10 @@ jobs:
     - run: sudo apt-get update && sudo apt-get install -y nginx && sudo systemctl start nginx
 
     - name: ZAP Scan
-      uses: ./
+      uses: zaproxy/action-full-scan@v0.12.0
       id: action-full-scan
       with:
         target: 'http://testfire.net/'
-        cmd_options: '-t http://testfire.net/ -g gen.conf -r zap-report.html -x zap-report.xml'
-        allow_issue_writing: true
+        cmd_options: '-a'
+        allow_issue_writing: false
         issue_title: 'ZAP Scan Report'
