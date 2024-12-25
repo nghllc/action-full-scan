@@ -13,7 +13,7 @@ on:
 
 jobs:
   check-run:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     env:
       GITHUB_TOKEN: ${{ secrets.MY_TOKEN }}
     steps:
@@ -27,4 +27,6 @@ jobs:
       id: action-full-scan
       with:
         target: 'http://testfire.net/'
-        allow_issue_writing: false
+        cmd_options: '-t http://testfire.net/ -g gen.conf -r zap-report.html -x zap-report.xml'
+        allow_issue_writing: true
+        issue_title: 'ZAP Scan Report'
